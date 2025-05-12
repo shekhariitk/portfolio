@@ -2059,16 +2059,22 @@ print(f"Model accuracy: {accuracy:.2f}")
             const contactForm = document.querySelector('.contact-form');
             const notification = document.querySelector('.notification');
 
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                if (notification) {
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 3000);
-                }
-                contactForm.reset();
-            });
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (notification) {
+                        notification.classList.add('show');
+                        setTimeout(() => {
+                            notification.classList.remove('show');
+                        }, 3000);
+                    } else {
+                        console.error("Notification element not found.");
+                    }
+                    contactForm.reset();
+                });
+            } else {
+                console.error("Contact form element not found.");
+            }
         });
 
         window.addEventListener('scroll', () => {
@@ -2175,6 +2181,6 @@ print(f"Model accuracy: {accuracy:.2f}")
         relevantCoursesGrid.appendChild(table);
     }
 </script>
-<div class="notification" style="display: none;">Your message has been sent successfully!</div>
+<div class="notification">Your message has been sent successfully!</div>
 </body>
 </html>
