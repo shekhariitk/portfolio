@@ -1385,6 +1385,26 @@
             background: var(--accent-red);
             color: var(--bg-primary);
         }
+
+        @media (max-width: 768px) {
+  .timeline .section-title {
+    display: block;
+    width: 100%;
+    position: static;
+    margin-bottom: 2rem;
+    text-align: center;
+    z-index: 2;
+    background: var(--bg-secondary);
+    padding-top: 1rem;
+  }
+  .timeline {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .timeline::before {
+    top: 3.5rem;
+  }
+}
     </style>
 </head>
 <body>
@@ -1410,7 +1430,6 @@
                     <li><a href="#skills" aria-label="Navigate to Skills">Skills</a></li>
                     <li><a href="#certifications" aria-label="Navigate to Certifications">Certifications</a></li>
                     <li><a href="#relevant-courses" aria-label="Navigate to Relevant Courses">Relevant Courses</a></li>
-                    <li><a href="#insights" aria-label="Navigate to Insights">Insights</a></li>
                     <li><a href="#contact" aria-label="Navigate to Contact">Contact</a></li>
                 </ul>
             </nav>
@@ -1504,107 +1523,6 @@
             
             <div class="projects-grid">
                 <!-- Project Card -->
-                <div class="project-card" data-category="ml">
-                    <img class="lazy" data-src="https://via.placeholder.com/400" src="placeholder.jpg" alt="Project Title 1">
-                    <div class="project-overlay">
-                        <h3 class="project-title">Project Title 1</h3>
-                        <p class="project-description">Brief description of the project goes here.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">TensorFlow</span>
-                            <span class="tech-badge">Pandas</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card -->
-                <div class="project-card" data-category="dl">
-                    <img class="lazy" data-src="https://via.placeholder.com/400" src="placeholder.jpg" alt="Project Image">
-                    <div class="project-overlay">
-                        <h3 class="project-title">Project Title 2</h3>
-                        <p class="project-description">Brief description of the project goes here.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Keras</span>
-                            <span class="tech-badge">NumPy</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card -->
-                <div class="project-card" data-category="data-viz">
-                    <img class="lazy" data-src="https://via.placeholder.com/400" src="placeholder.jpg" alt="Project Image">
-                    <div class="project-overlay">
-                        <h3 class="project-title">Project Title 3</h3>
-                        <p class="project-description">Brief description of the project goes here.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Matplotlib</span>
-                            <span class="tech-badge">Seaborn</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card -->
-                <div class="project-card" data-category="ml">
-                    <img class="lazy" data-src="https://via.placeholder.com/400" src="placeholder.jpg" alt="Project Image">
-                    <div class="project-overlay">
-                        <h3 class="project-title">Project Title 4</h3>
-                        <p class="project-description">Brief description of the project goes here.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Scikit-learn</span>
-                            <span class="tech-badge">Flask</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card -->
-                <div class="project-card" data-category="dl">
-                    <img class="lazy" data-src="https://via.placeholder.com/400" src="placeholder.jpg" alt="Project Image">
-                    <div class="project-overlay">
-                        <h3 class="project-title">Project Title 5</h3>
-                        <p class="project-description">Brief description of the project goes here.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">PyTorch</span>
-                            <span class="tech-badge">OpenCV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card -->
-                <div class="project-card" data-category="data-viz">
-                    <img class="lazy" data-src="https://via.placeholder.com/400" src="placeholder.jpg" alt="Project Image">
-                    <div class="project-overlay">
-                        <h3 class="project-title">Project Title 6</h3>
-                        <p class="project-description">Brief description of the project goes here.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Plotly</span>
-                            <span class="tech-badge">Dash</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1675,57 +1593,6 @@ print(f"Model accuracy: {accuracy:.2f}")
             </div>
         </div>
     </section>
-    <!-- Insights Section -->
-    <section id="insights">
-        <div class="container">
-            <h2 class="section-title">Insights</h2>
-            
-            <div class="insights-grid">
-                <!-- Insight Card -->
-                <div class="insight-card">
-                    <div class="insight-date">January 1, 2023</div>
-                    <h3 class="insight-title">Insight Title 1</h3>
-                    <p class="insight-excerpt">Brief excerpt of the insight goes here. This is a short summary of the content.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <!-- Insight Card -->
-                <div class="insight-card">
-                    <div class="insight-date">February 15, 2023</div>
-                    <h3 class="insight-title">Insight Title 2</h3>
-                    <p class="insight-excerpt">Brief excerpt of the insight goes here. This is a short summary of the content.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <!-- Insight Card -->
-                <div class="insight-card">
-                    <div class="insight-date">March 10, 2023</div>
-                    <h3 class="insight-title">Insight Title 3</h3>
-                    <p class="insight-excerpt">Brief excerpt of the insight goes here. This is a short summary of the content.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <!-- Insight Card -->
-                <div class="insight-card">
-                    <div class="insight-date">April 5, 2023</div>
-                    <h3 class="insight-title">Insight Title 4</h3>
-                    <p class="insight-excerpt">Brief excerpt of the insight goes here. This is a short summary of the content.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <!-- Insight Card -->
-                <div class="insight-card">
-                    <div class="insight-date">May 20, 2023</div>
-                    <h3 class="insight-title">Insight Title 5</h3>
-                    <p class="insight-excerpt">Brief excerpt of the insight goes here. This is a short summary of the content.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <!-- Insight Card -->
-                <div class="insight-card">
-                    <div class="insight-date">June 30, 2023</div>
-                    <h3 class="insight-title">Insight Title 6</h3>
-                    <p class="insight-excerpt">Brief excerpt of the insight goes here. This is a short summary of the content.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Contact Section -->
     <section id="contact">
     <div class="container">
@@ -1736,7 +1603,7 @@ print(f"Model accuracy: {accuracy:.2f}")
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt contact-icon"></i>
                     <div class="contact-text">
-                        <h3>Indian Institute Of Kanpur</h3>
+                        <h3>Indian Institute Of Technology Kanpur</h3>
                         <p>Kanpur, India</p>
                     </div>
                 </div>
@@ -1798,23 +1665,41 @@ print(f"Model accuracy: {accuracy:.2f}")
         const data = {
             projects: [
                 {
-                    title: "Project Title 1",
-                    description: "Brief description of the project goes here.",
-                    tech: ["Python", "TensorFlow", "Pandas"],
-                    image: "https://via.placeholder.com/400",
-                    github: "#",
-                    demo: "#",
+                    title: "DiamondPricePrediction",
+                    description: "A machine learning project to predict the price of diamonds based on key features such as carat, cut,  and more. Built with Python, Scikit-learn, and flask for deployment",
+                    tech: ["Python", "Sckit-learn", "Flask", "Pandas", "NumPy"],
+                    image: "https://tse4.mm.bing.net/th?id=OIP.jDuMqzedqJsepOmfdpQTkQHaEY&pid=Api&P=0&h=180",
+                    github: "https://github.com/shekhariitk/DiamondPricePrediction",
+                    demo: "https://diamondpriceprediction-h7hl.onrender.com",
                     category: "ml"
                 },
                 {
-                    title: "Project Title 2",
-                    description: "Brief description of the project goes here.",
-                    tech: ["Python", "Keras", "NumPy"],
-                    image: "https://via.placeholder.com/400",
-                    github: "#",
-                    demo: "#",
-                    category: "dl"
-                }
+                    title: "LaptopPricePrediction",
+                    tech: ["Python", "flask", "NumPy", "Pandas", "Scikit-learn"],
+                    description: "A machine learning project to predict laptop prices based on specifications such as brand, processor, RAM, storage, and more. Built with Python, Scikit-learn, and Flask for deployment.",
+                    image: "https://www.tzvi.dev/posts/introducing-laptop-price-prediction/featured.png",
+                    github: "https://github.com/shekhariitk/LaptopPricePrediction",
+                    demo: "https://laptoppriceprediction-4eo2.onrender.com",
+                    category: "ml"
+                },
+                {
+                    title: "BrainStrokePrediction",
+                    tech: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy"],
+                    image: "https://tse1.mm.bing.net/th?id=OIP.1VJKfDu_CCGShGGKAKE9RAHaE8&pid=Api&P=0&h=180",
+                    github: "https://github.com/shekhariitk/BrainStrokePrediction",
+                    demo: "https://brainstrokeprediction.onrender.com",
+                    category: "ml",
+                    description: "A machine learning project to predict the likelihood of a brain stroke based on various health factors. Built with Python, Scikit-learn, and Flask for deployment."
+                },
+                {
+                    title: "medicine-recommendation-system",
+                    tech: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy"],
+                    image: "https://tse3.mm.bing.net/th?id=OIP.yMwBzPZYU2G0rAdrr8D2ogHaHD&pid=Api&P=0&h=180",
+                    github: "https://github.com/shekhariitk/medicine-recommendation-system",
+                    demo: "https://medicine-recommendation-system-k3jj.onrender.com",
+                    category: "ml",
+                    description: "A machine learning project to recommend medicines based on symptoms and recommend some diets excersices etc"  
+                },
             ],
             skills: [
                 {
@@ -2148,12 +2033,13 @@ print(f"Model accuracy: {accuracy:.2f}")
 
         // Define the courses data
         const relevantCourses = [
-            { name: "Machine Learning", code: "ML101", institution: "XYZ University", year: 2023 },
-            { name: "Deep Learning", code: "DL202", institution: "ABC Institute", year: 2024 },
-            { name: "Data Visualization", code: "DV303", institution: "DEF Academy", year: 2022 },
-            { name: "Statistics for Data Science", code: "DS404", institution: "GHI College", year: 2023 },
-            { name: "Big Data Analytics", code: "BDA505", institution: "JKL University", year: 2024 },
-            { name: "AI for Everyone", code: "AI606", institution: "MNO Institute", year: 2023 }
+            { name: "Machine Learning", code: "CS771", institution: "IIT kanpur", year: 2025 },
+            { name: "Deep Learning", code: "CS771", institution: "IIT kanpur", year: 2025},
+            { name: "Linear Regression And Anova", code: "MTH441", institution: "IIT kanpur", year: 2025 },
+            { name: "Time series Analysis", code: "MTH442", institution: "IIT kanpur", year: 2025 },
+            { name: "Non Linear Regression", code: "MTH686", institution: "IIT kanpur", year: 2025 },
+            { name: "Probability", code: "MSO201", institution: "IIT kanpur", year: 2024 },
+            { name: "Programming in C", code: "STA503", institution:"BHU Varanasi",year:2023}
         ];
 
         // Create Table Element
