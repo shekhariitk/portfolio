@@ -10,7 +10,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,7 +53,7 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Space Grotesk', Arial, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
@@ -91,6 +91,9 @@
             margin-bottom: 3rem;
             position: relative;
             display: inline-block;
+            font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+            letter-spacing: 2.5px;
+            text-shadow: 0 2px 8px rgba(0,245,255,0.08), 0 1px 2px rgba(0,0,0,0.12);
         }
 
         .section-title::after {
@@ -104,42 +107,44 @@
             border-radius: 2px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
+        /* Enhanced Button Styles */
+        .btn, .filter-btn, .code-run-btn, #search-btn, .certification-btn {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            color: var(--bg-primary);
+            border: none;
             border-radius: var(--border-radius);
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            outline: none;
             position: relative;
             overflow: hidden;
-            z-index: 1;
+            transition: background 0.4s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(176, 38, 255, 0.08);
+            display: inline-block;
         }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            color: var(--bg-primary);
-            box-shadow: 0 4px 15px rgba(176, 38, 255, 0.3);
+        .btn:active, .filter-btn:active, .code-run-btn:active, #search-btn:active, .certification-btn:active {
+            transform: scale(0.96);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(176, 38, 255, 0.4);
+        .btn:hover, .filter-btn:hover, .code-run-btn:hover, #search-btn:hover, .certification-btn:hover {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+            box-shadow: 0 6px 24px rgba(176, 38, 255, 0.18);
+            transform: scale(1.04);
         }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--accent-blue);
-            box-shadow: 0 4px 15px rgba(0, 245, 255, 0.1);
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            background-color: rgba(255,255,255,0.5);
+            pointer-events: none;
         }
-
-        .btn-secondary:hover {
-            background: rgba(0, 245, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 245, 255, 0.2);
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
         }
 
         .glass-card {
@@ -216,8 +221,20 @@
             font-weight: 500;
             position: relative;
             padding: 0.5rem 0;
+            color: var(--text-primary);
+            transition: color 0.3s;
         }
-
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+        .nav-links a.active {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -225,10 +242,9 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var (--accent-blue), var(--accent-purple));
-            transition: var(--transition);
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            transition: width 0.3s;
         }
-
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
@@ -461,6 +477,25 @@
         .timeline-description {
             color: var(--text-secondary);
         }
+
+        /* Timeline Animation & Icon Styles */
+        .timeline-dot i {
+  color: #fff;
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.timeline-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
         /* Projects Section */
         .project-filters {
@@ -768,11 +803,15 @@
         .certification-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: var(--accent-green);
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
         .certification-issuer {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            color: var(--accent-blue);
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .certification-year {
@@ -780,15 +819,15 @@
             color: var(--accent-blue);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .certification-btn {
             display: inline-block;
             margin-top: 1rem;
             padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            background: rgba(0, 245, 255, 0.1);
+            border-radius: var(--border-radius);           
             border: 1px solid var(--accent-blue);
             transition: var(--transition);
         }
@@ -860,52 +899,6 @@
             white-space: pre-wrap;
         }
 
-        /* Insights Section */
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .insight-card {
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .insight-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .insight-date {
-            color: var(--accent-purple);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .insight-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .insight-excerpt {
-            color: var (--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .read-more {
-            color: var(--accent-blue);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var (--transition);
-        }
-
-        .read-more:hover {
-            color: var(--accent-purple);
-            gap: 0.8rem;
-        }
 
         /* Contact Section */
         #contact {
@@ -1405,6 +1398,24 @@
     top: 3.5rem;
   }
 }
+
+.animated-gradient {
+            background: linear-gradient(270deg, #00f5ff, #b026ff, #00ffab, #ff4ecd, #00f5ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: gradientMove 2.5s cubic-bezier(.4,0,.2,1) infinite alternate;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 16px rgba(0,245,255,0.15), 0 1px 2px rgba(176,38,255,0.10);
+            filter: brightness(1.15) drop-shadow(0 0 8px #00f5ff88);
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
     </style>
 </head>
 <body>
@@ -1442,8 +1453,9 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        Hi, I'm <span class="typewriter">[Shekhar]</span>
+                        Hi, I'm <span class="typewriter animated-gradient">[Shekhar]</span>
                     </h1>
+                    <p class="hero-tagline" style="font-size:1.2rem;color:var(--accent-blue);margin-bottom:1.5rem;">Turning Data Into Insights & Impact</p>
                     <p class="hero-subtitle">Data Scientist & Machine Learning Engineer</p>
                     
                     <div class="hero-cta">
@@ -1451,16 +1463,27 @@
                         <a href="#contact" class="btn btn-secondary">Contact Me</a>
                     </div>
                     
-                    <p>Download my resume:</p>
-                    <div class="resume-options">
-                        <a href="#" class="resume-btn">Data Science</a>
-                        <a href="#" class="resume-btn">Machine Learning</a>
-                        <a href="#" class="resume-btn">Deep Learning</a>
+                    <div class="resume-download-section" style="margin-top:2rem;">
+                        <div class="resume-download-title" style="display:flex;align-items:center;gap:0.7rem;font-size:1.15rem;font-weight:600;color:var(--accent-blue);margin-bottom:1rem;">
+                            <i class="fas fa-file-download" style="font-size:1.5rem;"></i>
+                            <span>Download my resume:</span>
+                        </div>
+                        <div class="resume-options">
+                            <a href="#" class="resume-btn glass-card" style="display:flex;align-items:center;gap:0.7rem;min-width:170px;justify-content:center;">
+                                <i class="fas fa-database"></i> Data Science
+                            </a>
+                            <a href="#" class="resume-btn glass-card" style="display:flex;align-items:center;gap:0.7rem;min-width:170px;justify-content:center;">
+                                <i class="fas fa-robot"></i> Machine Learning
+                            </a>
+                            <a href="#" class="resume-btn glass-card" style="display:flex;align-items:center;gap:0.7rem;min-width:170px;justify-content:center;">
+                                <i class="fas fa-brain"></i> Deep Learning
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="hero-image">
-                    <img src="https://via.placeholder.com/350" alt="Profile Picture" class="profile-pic">
+                    <img src="#" alt="Profile Picture" class="profile-pic">
                 </div>
             </div>
         </div>
@@ -1469,7 +1492,7 @@
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title animated-gradient">About Me</h2>
             
             <div class="about-content">
                 <div class="about-image">
@@ -1486,17 +1509,15 @@
                 </div>
             </div>
             <div class="timeline">
-                <h3 class="section-title">My Journey</h3>
-                
+                <h3 class="section-title animated-gradient">My Journey</h3>
                 <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"><i class="fas fa-university"></i></div>
                     <div class="timeline-date">2021 - 2024</div>
                     <div class="timeline-title">BA(Hons) Statistics</div>
                     <div class="timeline-description">Banaras Hindu University (Varanasi)</div>
                 </div>
-                
                 <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"><i class="fas fa-graduation-cap"></i></div>
                     <div class="timeline-date">2024 - Present</div>
                     <div class="timeline-title">M.Sc Statistics</div>
                     <div class="timeline-description">Indian Institute of Technology Kanpur</div>
@@ -1507,7 +1528,7 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title animated-gradient">Projects</h2>
             
             <div class="project-filters">
                 <button class="filter-btn active" data-filter="all">All</button>
@@ -1530,7 +1551,7 @@
     <!-- Skills Section -->
     <section id="skills">
     <div class="container">
-        <h2 class="section-title">Skills</h2>       
+        <h2 class="section-title animated-gradient">Skills</h2>       
         <div class="skills-container">
         </div>
     </div>
@@ -1539,7 +1560,7 @@
     <!-- Relevant Courses Section -->
 <section id="relevant-courses">
     <div class="container">
-        <h2 class="section-title">Relevant Courses</h2>
+        <h2 class="section-title animated-gradient">Relevant Courses</h2>
         <div class="courses-grid">
             <!-- Dynamic content will be populated here -->
         </div>
@@ -1549,7 +1570,7 @@
     <!-- Certifications Section -->
     <section id="certifications">
         <div class="container">
-            <h2 class="section-title">Certifications</h2>           
+            <h2 class="section-title animated-gradient">Certifications</h2>           
             <div class="certifications-grid">
             </div>
         </div>
@@ -1557,7 +1578,7 @@
     <!-- Code Sample Section -->
     <section id="code-sample">
         <div class="container">
-            <h2 class="section-title">Code Sample</h2>
+            <h2 class="section-title animated-gradient">Code Sample</h2>
             
             <div class="code-container">
                 <div class="code-header">
@@ -1596,7 +1617,7 @@ print(f"Model accuracy: {accuracy:.2f}")
     <!-- Contact Section -->
     <section id="contact">
     <div class="container">
-        <h2 class="section-title">Contact Me</h2>
+        <h2 class="section-title animated-gradient">Contact Me</h2>
         
         <div class="contact-container">
             <div class="contact-info">
@@ -1668,7 +1689,7 @@ print(f"Model accuracy: {accuracy:.2f}")
                     title: "DiamondPricePrediction",
                     description: "A machine learning project to predict the price of diamonds based on key features such as carat, cut,  and more. Built with Python, Scikit-learn, and flask for deployment",
                     tech: ["Python", "Sckit-learn", "Flask", "Pandas", "NumPy"],
-                    image: "https://tse4.mm.bing.net/th?id=OIP.jDuMqzedqJsepOmfdpQTkQHaEY&pid=Api&P=0&h=180",
+                    image: "images/projects/diamond-image.png",
                     github: "https://github.com/shekhariitk/DiamondPricePrediction",
                     demo: "https://diamondpriceprediction-h7hl.onrender.com",
                     category: "ml"
@@ -1677,7 +1698,7 @@ print(f"Model accuracy: {accuracy:.2f}")
                     title: "LaptopPricePrediction",
                     tech: ["Python", "flask", "NumPy", "Pandas", "Scikit-learn"],
                     description: "A machine learning project to predict laptop prices based on specifications such as brand, processor, RAM, storage, and more. Built with Python, Scikit-learn, and Flask for deployment.",
-                    image: "https://www.tzvi.dev/posts/introducing-laptop-price-prediction/featured.png",
+                    image: "images/projects/laptop.png",
                     github: "https://github.com/shekhariitk/LaptopPricePrediction",
                     demo: "https://laptoppriceprediction-4eo2.onrender.com",
                     category: "ml"
@@ -1685,16 +1706,16 @@ print(f"Model accuracy: {accuracy:.2f}")
                 {
                     title: "BrainStrokePrediction",
                     tech: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy"],
-                    image: "https://tse1.mm.bing.net/th?id=OIP.1VJKfDu_CCGShGGKAKE9RAHaE8&pid=Api&P=0&h=180",
+                    image: "images/projects/brain.png",
                     github: "https://github.com/shekhariitk/BrainStrokePrediction",
                     demo: "https://brainstrokeprediction.onrender.com",
                     category: "ml",
                     description: "A machine learning project to predict the likelihood of a brain stroke based on various health factors. Built with Python, Scikit-learn, and Flask for deployment."
                 },
                 {
-                    title: "medicine-recommendation-system",
+                    title: "MedicineRecommendation-System",
                     tech: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy"],
-                    image: "https://tse3.mm.bing.net/th?id=OIP.yMwBzPZYU2G0rAdrr8D2ogHaHD&pid=Api&P=0&h=180",
+                    image: "images/projects/medicines.png",
                     github: "https://github.com/shekhariitk/medicine-recommendation-system",
                     demo: "https://medicine-recommendation-system-k3jj.onrender.com",
                     category: "ml",
